@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#070913" />
+  <meta
+    name="description"
+    content="RIZYEE AI — Personal AI Assistant for intelligent chat, voice interaction, and secure Windows remote control."
+  />
+  <title>RIZYEE AI — Personal AI Assistant</title>
+  <link rel="icon" href="./assets/logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Mobile backdrop overlay -->
+    <div id="sidebar-backdrop" class="sidebar-backdrop" aria-hidden="true"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar" aria-label="Primary navigation">
+      <div class="sidebar-header">
+        <a href="#chat" class="brand" data-view-link="chat">
+          <img src="./assets/logo.svg" alt="RIZYEE AI Logo" class="brand-logo" />
+          <div class="brand-text">
+            <span class="brand-name">RIZYEE AI</span>
+            <span class="brand-tag">Personal Assistant</span>
+          </div>
+        </a>
+        <button id="close-sidebar-btn" class="icon-btn mobile-only" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="sidebar-actions">
+        <button id="new-chat-btn" class="btn-gradient full-width">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12h14" />
+          </svg>
+          <span>New Chat</span>
+        </button>
+      </div>
+
+      <nav class="nav-menu" aria-label="Workspace sections">
+        <div class="nav-label">Workspace</div>
+        <button class="nav-item active" data-view="chat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
+          <span>AI Chat</span>
+        </button>
+        <button class="nav-item" data-view="voice">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+            <line x1="12" y1="19" x2="12" y2="23" />
+            <line x1="8" y1="23" x2="16" y2="23" />
+          </svg>
+          <span>Voice Mode</span>
+        </button>
+        <button class="nav-item" data-view="devices">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+            <line x1="8" y1="21" x2="16" y2="21" />
+            <line x1="12" y1="17" x2="12" y2="21" />
+          </svg>
+          <span>Devices</span>
+        </button>
+        <button class="nav-item" data-view="permissions">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+          <span>Permissions</span>
+        </button>
+        <button class="nav-item" data-view="milestones">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+          </svg>
+          <span>Milestones & About</span>
+        </button>
+        <button class="nav-item" data-view="settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3" />
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.6.77 1.04 1.4 1.15H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+          </svg>
+          <span>Settings</span>
+        </button>
+      </nav>
+
+      <div class="history-section">
+        <div class="history-header">
+          <span class="nav-label">Recent Chats</span>
+          <button id="clear-history-btn" class="text-btn" title="Clear all saved chats">Clear</button>
+        </div>
+        <div id="chat-history-list" class="chat-history-list"></div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="status-pill" id="backend-status-pill">
+          <span class="status-dot offline" id="backend-status-dot"></span>
+          <span id="backend-status-text">Backend: Checking...</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="main-area">
+      <!-- Top Bar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button id="open-sidebar-btn" class="icon-btn mobile-only" aria-label="Open menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+          <div>
+            <h1 id="view-title" class="topbar-title">AI Assistant</h1>
+            <p id="view-subtitle" class="topbar-subtitle">Ask questions, plan tasks, and explore RIZYEE</p>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button id="tts-toggle-btn" class="pill-btn" title="Toggle spoken AI replies">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+            </svg>
+            <span id="tts-toggle-label">Voice Reply: Off</span>
+          </button>
+          <button id="clear-chat-btn" class="pill-btn danger-hover" title="Clear current conversation">
+            Clear Chat
+          </button>
+        </div>
+      </header>
+
+      <!-- VIEW 1: CHAT -->
+      <section id="view-chat" class="view active">
+        <div id="message-list" class="message-list" role="log" aria-live="polite"></div>
+
+        <div id="suggested-prompts" class="suggested-prompts">
+          <button class="prompt-chip" data-prompt="Explain a programming concept.">
+            <span class="chip-title">Programming</span>
+            <span class="chip-desc">Explain a programming concept</span>
+          </button>
+          <button class="prompt-chip" data-prompt="Write Python code.">
+            <span class="chip-title">Python</span>
+            <span class="chip-desc">Write Python code</span>
+          </button>
+          <button class="prompt-chip" data-prompt="Help me debug my project.">
+            <span class="chip-title">Debugging</span>
+            <span class="chip-desc">Help me debug my project</span>
+          </button>
+          <button class="prompt-chip" data-prompt="Show me the total RIZYEE milestones and building steps.">
+            <span class="chip-title">Roadmap</span>
+            <span class="chip-desc">Show total milestones &amp; build steps</span>
+          </button>
+        </div>
+
+        <div class="composer-wrap">
+          <div class="composer">
+            <textarea
+              id="chat-input"
+              rows="1"
+              placeholder="Message RIZYEE AI..."
+              aria-label="Message RIZYEE AI"
+            ></textarea>
+            <div class="composer-actions">
+              <button id="mic-btn" class="icon-action-btn" title="Voice input (Browser Speech API)" aria-label="Start voice input">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                  <line x1="12" y1="19" x2="12" y2="23" />
+                  <line x1="8" y1="23" x2="16" y2="23" />
+                </svg>
+              </button>
+              <button id="send-btn" class="send-btn" title="Send message" aria-label="Send message">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <p class="composer-hint" id="voice-status-hint">
+            Press Enter to send · Shift+Enter for new line · Browser mic requires HTTPS or localhost
+          </p>
+        </div>
+      </section>
+
+      <!-- VIEW 2: VOICE ASSISTANT -->
+      <section id="view-voice" class="view">
+        <div class="panel-grid">
+          <div class="card hero-card">
+            <div class="voice-orb-wrap">
+              <div id="voice-orb" class="voice-orb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                  <line x1="12" y1="19" x2="12" y2="23" />
+                  <line x1="8" y1="23" x2="16" y2="23" />
+                </svg>
+              </div>
+            </div>
+            <h2>Browser Voice Interaction</h2>
+            <p class="muted" id="voice-panel-status">
+              Click "Start Listening" to speak a prompt using your browser's SpeechRecognition API.
+            </p>
+            <div class="button-row">
+              <button id="voice-listen-btn" class="btn-gradient">Start Listening</button>
+              <button id="voice-stop-btn" class="btn-secondary">Stop</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Browser Voice vs. Windows Wake Word</h3>
+            <ul class="clean-list">
+              <li><strong>Website Voice Mode:</strong> Uses your browser microphone only after permission and sends the transcript to chat.</li>
+              <li><strong>Windows Local Agent:</strong> Uses your custom offline Python wake-word engine (<code>models/rizyee.onnx</code> + Vosk) listening for <em>"RIZYEE"</em> &rarr; <em>"Yes Shiva."</em></li>
+              <li><strong>Browser Support:</strong> Chrome on Windows and Android supports Web Speech API over HTTPS; unsupported browsers fall back to text input.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 3: DEVICES -->
+      <section id="view-devices" class="view">
+        <div class="panel-grid">
+          <div class="card">
+            <div class="card-header-row">
+              <h3>Registered Devices</h3>
+              <span class="badge warn">Backend Phase Pending</span>
+            </div>
+            <p class="muted">
+              Once your FastAPI backend and Windows agent are paired, your laptop will appear here with live online/offline status and task history.
+            </p>
+            <div class="device-item">
+              <div>
+                <strong>Shiva's Windows 11 Laptop</strong>
+                <p class="muted small">Local Python Agent (`rizyee`) · Outbound HTTPS/WSS</p>
+              </div>
+              <span class="status-pill"><span class="status-dot offline"></span>Not paired yet</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Android &amp; Remote Workflow</h3>
+            <ol class="clean-list">
+              <li>Open this Netlify site on Android Chrome and sign in.</li>
+              <li>Verify your Windows laptop shows <strong>Online</strong>.</li>
+              <li>Type or speak a command like <em>"Open VS Code"</em>.</li>
+              <li>Approve sensitive actions before the Windows agent runs them.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 4: PERMISSIONS -->
+      <section id="view-permissions" class="view">
+        <div class="panel-grid">
+          <div class="card">
+            <h3>Permission-Based Execution</h3>
+            <p class="muted">
+              RIZYEE never executes arbitrary AI-generated shell commands. Every request is classified into three levels:
+            </p>
+            <ul class="clean-list">
+              <li><strong>A. Question:</strong> Answered directly in chat (e.g., <em>"How do I create a folder?"</em>).</li>
+              <li><strong>B. Plan:</strong> Proposed action + target path shown before running.</li>
+              <li><strong>C. Approved Action:</strong> Validated against the action registry and executed safely.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Risk Classification</h3>
+            <div class="perm-row">
+              <span>Open Apps / Websites / Time</span>
+              <span class="badge ok">Low Risk</span>
+            </div>
+            <div class="perm-row">
+              <span>Close Apps / File Moves</span>
+              <span class="badge warn">Confirm First</span>
+            </div>
+            <div class="perm-row">
+              <span>Delete Files / System Power / Admin</span>
+              <span class="badge danger">Explicit Approval</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 5: MILESTONES & ABOUT -->
+      <section id="view-milestones" class="view">
+        <div class="panel-grid">
+          <div class="card full-span">
+            <h3>RIZYEE Development Milestones &amp; Roadmap</h3>
+            <p class="muted">Complete building steps from local Python voice assistant to full remote web platform.</p>
+            <div class="milestone-grid">
+              <div class="milestone done">
+                <span class="badge ok">Completed</span>
+                <h4>Local Core (M1–M7)</h4>
+                <p>Vosk offline STT, pyttsx3 TTS, custom openWakeWord (<code>rizyee.onnx</code>), SQLite memory/reminders, Ollama chat, action executor.</p>
+              </div>
+              <div class="milestone active">
+                <span class="badge info">Phase 1 — Now</span>
+                <h4>Frontend Website (Netlify)</h4>
+                <p>Responsive dark UI in <code>web/</code> with AI chat, history, browser voice mode, device &amp; permission views.</p>
+              </div>
+              <div class="milestone">
+                <span class="badge">Phase 2</span>
+                <h4>FastAPI AI Backend</h4>
+                <p>Server-side AI provider abstraction, auth, conversation API, task validation, and rate limiting.</p>
+              </div>
+              <div class="milestone">
+                <span class="badge">Phase 3 &amp; 4</span>
+                <h4>Windows Agent &amp; Remote Pairing</h4>
+                <p>One-time pairing code, outbound HTTPS/WSS connection, permission checks, and Android Chrome remote control.</p>
+              </div>
+              <div class="milestone">
+                <span class="badge">Wake Word Upgrade</span>
+                <h4>Custom Voice Training v2</h4>
+                <p>Expanded positive + hard-negative samples, multi-frame smoothing, and false-trigger rejection.</p>
+              </div>
+              <div class="milestone">
+                <span class="badge">Phase 5–7</span>
+                <h4>Automation, Android &amp; Release</h4>
+                <p>Screenshots, granular permissions, optional Android companion app, full security &amp; integration tests.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 6: SETTINGS -->
+      <section id="view-settings" class="view">
+        <div class="panel-grid">
+          <div class="card">
+            <h3>Backend Connection Settings</h3>
+            <p class="muted">
+              Configure your FastAPI backend URL. Never put AI API keys in frontend JavaScript — keep all keys on the backend server.
+            </p>
+            <label class="field-label" for="api-url-input">FastAPI Backend Base URL</label>
+            <input
+              id="api-url-input"
+              type="url"
+              class="text-input"
+              placeholder="http://127.0.0.1:8000"
+            />
+            <div class="button-row">
+              <button id="save-settings-btn" class="btn-gradient">Save &amp; Test Connection</button>
+              <button id="reset-settings-btn" class="btn-secondary">Reset Default</button>
+            </div>
+            <p id="settings-feedback" class="muted small"></p>
+          </div>
+
+          <div class="card">
+            <h3>About RIZYEE</h3>
+            <p class="muted">
+              Built by <strong>Shiva</strong> (BTech CS &amp; IT). Designed as a modular personal AI assistant combining local Windows automation with a modern web interface.
+            </p>
+            <p class="muted small">
+              Activation phrase (Windows agent): <code>RIZYEE</code> &rarr; <code>Yes Shiva.</code>
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="./js/app.js"></script>
+</body>
+</html>

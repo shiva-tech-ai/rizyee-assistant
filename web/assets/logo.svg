@@ -1,0 +1,12 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="rizyeeGrad" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6D28D9" />
+      <stop offset="50%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="#0B1022" stroke="url(#rizyeeGrad)" stroke-width="2.5" />
+  <circle cx="32" cy="32" r="18" stroke="url(#rizyeeGrad)" stroke-width="1.5" stroke-opacity="0.45" />
+  <path d="M23 44V20H33.5C38.2 20 41.5 22.8 41.5 27.2C41.5 30.8 39.2 33.4 35.6 34.2L42 44H36.6L30.8 34.8H27.4V44H23ZM27.4 30.8H33C35.5 30.8 37 29.4 37 27.3C37 25.2 35.5 23.9 33 23.9H27.4V30.8Z" fill="url(#rizyeeGrad)" />
+</svg>
