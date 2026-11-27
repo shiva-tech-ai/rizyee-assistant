@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+
+.env
+.claude/
+
+data/*.db
+voice_samples/
+rizyee_samples.zip
+
+*.log
+# Downloaded AI models
+models/

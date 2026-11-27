@@ -1,0 +1,20 @@
+# RIZYEE - Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# Speech Recognition (offline, no API needed)
+vosk>=0.3.45
+
+# Microphone audio input
+sounddevice>=0.4.6
+
+# Text-to-Speech (offline)
+pyttsx3>=2.90
+
+# Wake word detection
+openwakeword>=0.6.0
+
+# Database
+# sqlite3 is built into Python - no install needed
+
+# Utilities
+numpy>=1.24.0
